@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://masterpigeon.com/sitemap.xml
+Sitemap: https://yigitugurlucimen.github.io/masterpigeon/sitemap.xml
