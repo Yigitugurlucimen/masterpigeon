@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://masterpigeon.com/sitemap.xml
