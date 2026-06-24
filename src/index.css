@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-navy: #1a2b56;
+  --color-brand-navy-light: #243a6e;
+  --color-brand-gold: #d4af37;
+  --color-brand-gold-light: #e8c547;
+  --color-brand-black: #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {
@@ -8,7 +20,103 @@ body,
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #171717;
+  font-family: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-brand-black);
   color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(212, 175, 55, 0.35);
+  color: #fff;
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #e8c547 0%, #d4af37 50%, #b8941f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-label {
+  letter-spacing: 0.35em;
+}
+
+.glass-nav {
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.product-showcase-glow {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(212, 175, 55, 0.12) 0%,
+    rgba(26, 43, 86, 0.4) 45%,
+    transparent 70%
+  );
+}
+
+.ingredient-showcase-glow {
+  background: radial-gradient(
+    ellipse 70% 55% at 40% 45%,
+    rgba(180, 120, 60, 0.14) 0%,
+    rgba(212, 175, 55, 0.06) 35%,
+    transparent 65%
+  );
+}
+
+.ingredient-showcase-glow-blue {
+  background: radial-gradient(
+    ellipse 70% 55% at 60% 45%,
+    rgba(36, 58, 110, 0.4) 0%,
+    rgba(212, 175, 55, 0.08) 35%,
+    transparent 65%
+  );
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.35),
+    transparent
+  );
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.65s ease-out both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.nav-dropdown-panel {
+  transform: translateY(4px);
+}
+
+.group:hover .nav-dropdown-panel {
+  transform: translateY(0);
 }
