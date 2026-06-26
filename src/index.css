@@ -76,6 +76,15 @@ body {
   );
 }
 
+.mash-showcase-glow {
+  background: radial-gradient(
+    ellipse 75% 60% at 50% 40%,
+    rgba(16, 185, 129, 0.14) 0%,
+    rgba(6, 78, 59, 0.25) 40%,
+    transparent 70%
+  );
+}
+
 .section-divider {
   height: 1px;
   background: linear-gradient(
