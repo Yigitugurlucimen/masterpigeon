@@ -22,7 +22,6 @@ import {
 import productImage from './assets/premium-pigeon-mix-20kg.png'
 import blackMixImage from './assets/classic-black-mix-contents.png'
 import blueMixImage from './assets/premium-blue-mix-contents.png'
-import mashHeroImage from './assets/natural-pigeon-mash-1kg-hero.png'
 import mashProductImage from './assets/natural-pigeon-mash-1kg-product.png'
 import mashDetailImage from './assets/natural-pigeon-mash-1kg-detail.png'
 import logoImage from './assets/masterpigeon-logo.png'
@@ -35,10 +34,9 @@ const NAV_LINKS = [
     label: 'Ürünler',
     id: 'urun',
     children: [
-      { href: '#mix', label: 'Premium Mix 20 KG', id: 'mix' },
-      { href: '#mama', label: 'Güvercin Maması 1 KG', id: 'mama' },
-      { href: '#icerik-siyah', label: 'Mix — Classic Siyah', id: 'icerik-siyah' },
-      { href: '#icerik-lacivert', label: 'Mix — Premium Lacivert', id: 'icerik-lacivert' },
+      { href: '#urun-siyah', label: 'Siyah Güvercin Yemi', id: 'urun-siyah' },
+      { href: '#urun-lacivert', label: 'Lacivert Güvercin Yemi', id: 'urun-lacivert' },
+      { href: '#urun-mama', label: 'Güvercin Maması', id: 'urun-mama' },
     ],
   },
   { href: '#kalite', label: 'Kalite', id: 'kalite' },
@@ -51,10 +49,10 @@ const FOOTER_GROUPS = [
   {
     title: 'Keşfet',
     links: [
-      { href: '#urun', label: 'Ürün Grupları' },
-      { href: '#mix', label: 'Premium Mix 20 KG' },
-      { href: '#mama', label: 'Güvercin Maması 1 KG' },
-      { href: '#icerik-siyah', label: 'Classic Siyah Karışım' },
+      { href: '#urun', label: 'Tüm Ürünler' },
+      { href: '#urun-siyah', label: 'Siyah Güvercin Yemi' },
+      { href: '#urun-lacivert', label: 'Lacivert Güvercin Yemi' },
+      { href: '#urun-mama', label: 'Güvercin Maması' },
       { href: '#kalite', label: 'Üretim Kalitesi' },
     ],
   },
@@ -133,7 +131,9 @@ function App() {
     import.meta.env.VITE_DEALERSHIP_PHONE ?? '905534242228'
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba, Master Pigeon ürünleri hakkında bilgi almak istiyorum.')}`
-  const mashWhatsApp = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba, Master Pigeon %100 Doğal Güvercin Maması 1 KG hakkında bilgi almak istiyorum.')}`
+  const mashWhatsApp = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba, Master Pigeon Güvercin Maması 1 KG hakkında bilgi almak istiyorum.')}`
+  const siyahWhatsApp = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba, Master Pigeon Siyah Güvercin Yemi 20 KG hakkında bilgi almak istiyorum.')}`
+  const lacivertWhatsApp = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba, Master Pigeon Lacivert Güvercin Yemi 20 KG hakkında bilgi almak istiyorum.')}`
   const dealershipWhatsApp = `https://wa.me/${dealershipPhone}?text=${encodeURIComponent('Merhaba, Master Pigeon toptan bayilik hakkında bilgi almak istiyorum.')}`
   const dealershipTel = telLink(dealershipPhone)
   const dealershipDisplay = formatTrPhone(dealershipPhone)
@@ -163,36 +163,66 @@ function App() {
   ]
 
   const stats = [
-    { value: '2', label: 'Ürün Grubu' },
+    { value: '3', label: 'Premium Ürün' },
+    { value: '20 KG', label: 'Güvercin Yemi' },
     { value: '1 KG', label: 'Güvercin Maması' },
-    { value: '20 KG', label: 'Premium Mix' },
     { value: 'ISO', label: '9001 Kalite' },
   ]
 
-  const productGroups = [
+  const products = [
     {
-      id: 'mix',
-      anchor: '#mix',
-      badge: 'Master Mix Serisi',
-      title: 'Premium Pigeon Mix',
+      id: 'urun-siyah',
+      name: 'Siyah Güvercin Yemi',
       weight: '20 KG',
+      tag: 'Kısa Gagalı Güvercinler',
+      pack: 'Classic Siyah Ambalaj',
       description:
-        'Profesyonel yetiştiriciler için tahıl ve tohum karışımı. Classic Siyah ve Premium Lacivert formüller.',
-      accent: 'border-brand-gold/25 bg-gradient-to-br from-brand-navy/40 to-brand-black hover:border-brand-gold/40',
-      tagClass: 'text-brand-gold border-brand-gold/30 bg-brand-gold/10',
-      cta: 'Mix Serisini İncele',
+        'Küçük taneli, bezelyesiz formül. Kısa gagalı güvercinler ve dengeli günlük beslenme için ideal tahıl karışımı.',
+      image: blackMixImage,
+      imageAlt: 'Siyah Güvercin Yemi — Classic Siyah paket içeriği',
+      features: ['Bezelyesiz formül', 'Küçük taneli karışım', '10+ premium bileşen'],
+      cardBorder: 'border-neutral-700/60 hover:border-neutral-500/60',
+      cardBg: 'from-neutral-900/60 to-brand-black',
+      tagStyle: 'border-neutral-600 bg-neutral-800 text-gray-200',
+      dot: 'bg-neutral-900 ring-neutral-500',
+      accentText: 'text-brand-gold',
+      whatsapp: siyahWhatsApp,
     },
     {
-      id: 'mama',
-      anchor: '#mama',
-      badge: 'Güvercin Maması Grubu',
-      title: '%100 Doğal Güvercin Maması',
-      weight: '1 KG',
+      id: 'urun-lacivert',
+      name: 'Lacivert Güvercin Yemi',
+      weight: '20 KG',
+      tag: 'Performans Dönemi',
+      pack: 'Premium Lacivert Ambalaj',
       description:
-        'Yavru gelişimi ve günlük beslenme için toz formda doğal mama. Vitamin-mineral takviyeli, kolay sindirilebilir formül.',
-      accent: 'border-emerald-500/25 bg-gradient-to-br from-emerald-950/40 to-brand-black hover:border-emerald-500/40',
-      tagClass: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
-      cta: 'Mama Grubunu İncele',
+        'Bezelye ve zenginleştirilmiş mısır içeren geniş besin profilli karışım. Performans ve kondisyon dönemlerine uygun.',
+      image: blueMixImage,
+      imageAlt: 'Lacivert Güvercin Yemi — Premium Lacivert paket içeriği',
+      features: ['10+ premium bileşen', 'Bezelye destekli formül', 'Performans odaklı karışım'],
+      cardBorder: 'border-brand-navy-light/50 hover:border-brand-navy-light/80',
+      cardBg: 'from-brand-navy/50 to-brand-black',
+      tagStyle: 'border-brand-navy-light bg-brand-navy/80 text-blue-100',
+      dot: 'bg-brand-navy ring-brand-navy-light',
+      accentText: 'text-brand-gold',
+      whatsapp: lacivertWhatsApp,
+    },
+    {
+      id: 'urun-mama',
+      name: 'Güvercin Maması',
+      weight: '1 KG',
+      tag: '%100 Doğal',
+      pack: 'Toz Form Mama',
+      description:
+        'Yavru gelişimi ve büyüme desteği için vitamin-mineral takviyeli doğal mama. Kolay sindirilebilir toz formül.',
+      image: mashProductImage,
+      imageAlt: 'Güvercin Maması — %100 Doğal 1 KG ambalaj',
+      features: ['Vitamin & mineral takviyeli', 'Kolay sindirilebilir', 'Yavru gelişim desteği'],
+      cardBorder: 'border-emerald-500/30 hover:border-emerald-500/50',
+      cardBg: 'from-emerald-950/40 to-brand-black',
+      tagStyle: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+      dot: 'bg-emerald-500 ring-emerald-400',
+      accentText: 'text-emerald-400',
+      whatsapp: mashWhatsApp,
     },
   ]
 
@@ -213,7 +243,7 @@ function App() {
     {
       step: '01',
       title: 'Formül Seçin',
-      text: 'Premium Mix 20 KG (Classic / Lacivert) veya %100 Doğal Güvercin Maması 1 KG arasından ihtiyacınıza uygun ürünü belirleyin.',
+      text: 'Siyah Güvercin Yemi, Lacivert Güvercin Yemi veya Güvercin Maması arasından ihtiyacınıza uygun ürünü belirleyin.',
     },
     {
       step: '02',
@@ -231,16 +261,16 @@ function App() {
     {
       category: 'Güvercin Maması',
       icon: HeartPulse,
-      q: 'Güvercin maması ile Premium Mix arasındaki fark nedir?',
-      a: 'Premium Pigeon Mix 20 KG; günlük tahıl ve tohum karışımıdır, yetişkin güvercinlerin ana yemidir. %100 Doğal Güvercin Maması 1 KG ise toz formda, su ile karıştırılarak verilen; özellikle yavru gelişimi, büyüme dönemi ve ek beslenme desteği için geliştirilmiş bir mamadır.',
-      tip: 'Yavru beslenmesi ve büyüme desteği için Güvercin Maması 1 KG grubunu tercih edin.',
+      q: 'Güvercin maması ile güvercin yemi arasındaki fark nedir?',
+      a: 'Siyah ve Lacivert Güvercin Yemi; günlük tahıl ve tohum karışımıdır, yetişkin güvercinlerin ana yemidir. Güvercin Maması ise toz formda, su ile karıştırılarak verilen; özellikle yavru gelişimi, büyüme dönemi ve ek beslenme desteği için geliştirilmiş bir mamadır.',
+      tip: 'Yavru beslenmesi için Güvercin Maması 1 KG ürününü tercih edin.',
     },
     {
       category: 'Ürün Seçimi',
       icon: Package,
-      q: 'Classic Siyah mı, Premium Lacivert mi tercih etmeliyim?',
-      a: 'Classic Siyah; küçük taneli, bezelyesiz yapısıyla özellikle kısa gagalı güvercinler ve dengeli günlük beslenme arayan yetiştiriciler için idealdir. Premium Lacivert ise bezelye ve zenginleştirilmiş mısır içeren, daha geniş besin profilli formülüyle performans dönemlerine uygundur.',
-      tip: 'Kısa gagalı güvercinler için Classic Siyah paketi önerilir — bezelyesiz, küçük taneli karışım.',
+      q: 'Siyah mı, Lacivert güvercin yemi mi tercih etmeliyim?',
+      a: 'Siyah Güvercin Yemi; küçük taneli, bezelyesiz yapısıyla özellikle kısa gagalı güvercinler ve dengeli günlük beslenme arayan yetiştiriciler için idealdir. Lacivert Güvercin Yemi ise bezelye ve zenginleştirilmiş mısır içeren, daha geniş besin profilli formülüyle performans dönemlerine uygundur.',
+      tip: 'Kısa gagalı güvercinler için Siyah Güvercin Yemi önerilir — bezelyesiz, küçük taneli karışım.',
     },
     {
       category: 'Formül',
@@ -271,7 +301,7 @@ function App() {
       category: 'Sipariş',
       icon: MessageCircle,
       q: 'Sipariş vermek için ne yapmam gerekiyor?',
-      a: 'Perakende siparişler için WhatsApp hattımızdan ürün tercihinizi (Mix veya Mama) ve miktarınızı iletmeniz yeterlidir. Toptan talepler için bayilik hattını arayabilirsiniz.',
+      a: 'Perakende siparişler için WhatsApp hattımızdan ürün tercihinizi (Siyah Yem, Lacivert Yem veya Mama) ve miktarınızı iletmeniz yeterlidir. Toptan talepler için bayilik hattını arayabilirsiniz.',
     },
     {
       category: 'Beslenme',
@@ -287,50 +317,18 @@ function App() {
     },
   ]
 
-  const variants = [
-    {
-      name: 'Classic',
-      color: 'Siyah Ambalaj',
-      tag: 'Kısa Gagalı Güvercinler',
-      description:
-        'Küçük taneli, bezelyesiz formülüyle kısa gagalı güvercinler için özel olarak geliştirilmiş Classic Siyah karışım. Dengeli tahıl ve tohum profili sunar.',
-      accent: 'border-neutral-700 bg-neutral-900/80',
-      dot: 'bg-neutral-900 ring-neutral-600',
-      contentAnchor: '#icerik-siyah',
-      features: ['Bezelyesiz formül', 'Küçük taneli karışım', 'Kısa gagalı ırklara uygun'],
-    },
-    {
-      name: 'Premium',
-      color: 'Lacivert Ambalaj',
-      tag: 'Performans Dönemi',
-      description:
-        'Bezelye ve zenginleştirilmiş mısır içeren Premium Lacivert seri. 10+ bileşenli formülüyle geniş besin profili ve kondisyon desteği sağlar.',
-      accent: 'border-brand-navy-light bg-brand-navy/60',
-      dot: 'bg-brand-navy ring-brand-navy-light',
-      contentAnchor: '#icerik-lacivert',
-      features: ['10+ premium bileşen', 'Bezelye destekli formül', 'Performans odaklı karışım'],
-    },
-  ]
-
-  const credentials = [
-    { label: 'HACCP Sertifikalı', icon: BadgeCheck },
-    { label: 'ISO 9001 Kalite', icon: Award },
-    { label: 'Premium Quality', icon: Star },
-    { label: '20 KG Endüstriyel', icon: Shield },
-  ]
-
   const mixVariants = [
     {
-      id: 'icerik-siyah',
-      title: 'Siyah Paket İçeriği',
-      badge: 'Classic Siyah Paket',
+      id: 'urun-siyah',
+      title: 'Siyah Güvercin Yemi',
+      badge: 'Classic Siyah · 20 KG',
       badgeDot: 'bg-neutral-900 ring-neutral-500',
       badgeBorder: 'border-neutral-600 bg-neutral-900',
       image: blackMixImage,
-      imageAlt: 'Classic Siyah paket içeriği — seçilmiş tahıl ve tohum karışımı',
+      imageAlt: 'Siyah Güvercin Yemi — seçilmiş tahıl ve tohum karışımı',
       caption: 'Bezelyesiz · Küçük Taneli · 10+ Bileşen',
       description:
-        'Classic Siyah ambalajdaki Premium Pigeon Mix; kısa gagalı güvercinler için özel olarak hazırlanmış, küçük taneli ve bezelyesiz bir formüldür. 10\'dan fazla seçilmiş tahıl ve tohumdan oluşur.',
+        'Siyah Güvercin Yemi; kısa gagalı güvercinler için özel olarak hazırlanmış, küçük taneli ve bezelyesiz bir formüldür. 10\'dan fazla seçilmiş tahıl ve tohumdan oluşur.',
       callout:
         'Kısa gagalı güvercinler için özel: küçük taneli, bezelyesiz karışım — kolay tüketim, dengeli beslenme.',
       glowClass: 'ingredient-showcase-glow',
@@ -351,16 +349,16 @@ function App() {
       ],
     },
     {
-      id: 'icerik-lacivert',
-      title: 'Lacivert Paket İçeriği',
-      badge: 'Premium Lacivert Paket',
+      id: 'urun-lacivert',
+      title: 'Lacivert Güvercin Yemi',
+      badge: 'Premium Lacivert · 20 KG',
       badgeDot: 'bg-brand-navy ring-brand-navy-light',
       badgeBorder: 'border-brand-navy-light bg-brand-navy/80',
       image: blueMixImage,
-      imageAlt: 'Premium Lacivert paket içeriği — zenginleştirilmiş tahıl, baklagil ve tohum karışımı',
+      imageAlt: 'Lacivert Güvercin Yemi — zenginleştirilmiş tahıl, baklagil ve tohum karışımı',
       caption: 'Zenginleştirilmiş · 10+ Bileşen',
       description:
-        'Premium Lacivert ambalajdaki karışım; yeşil bezelye, sarı ve mor mısır ile 10\'dan fazla seçilmiş tahıl ve tohumdan oluşan zenginleştirilmiş bir formüldür.',
+        'Lacivert Güvercin Yemi; yeşil bezelye, sarı ve mor mısır ile 10\'dan fazla seçilmiş tahıl ve tohumdan oluşan zenginleştirilmiş bir formüldür.',
       callout: null,
       glowClass: 'ingredient-showcase-glow-blue',
       panelGradient: 'from-brand-navy/40 via-brand-black to-brand-black',
@@ -382,6 +380,13 @@ function App() {
     },
   ]
 
+  const credentials = [
+    { label: 'HACCP Sertifikalı', icon: BadgeCheck },
+    { label: 'ISO 9001 Kalite', icon: Award },
+    { label: 'Premium Quality', icon: Star },
+    { label: '3 Ürün Portföyü', icon: Shield },
+  ]
+
   const closeMenu = () => {
     setMenuOpen(false)
     setMixMenuOpen(false)
@@ -391,11 +396,9 @@ function App() {
     const sectionIds = [
       'hero',
       'urun',
-      'mix',
-      'mama',
-      'icerik',
-      'icerik-siyah',
-      'icerik-lacivert',
+      'urun-siyah',
+      'urun-lacivert',
+      'urun-mama',
       'kalite',
       'bayilik',
       'sss',
@@ -421,7 +424,7 @@ function App() {
 
   const navLinkClass = (id) =>
     `text-xs font-semibold uppercase tracking-wider transition ${
-      activeSection === id || (id === 'urun' && (activeSection === 'mix' || activeSection === 'mama'))
+      activeSection === id || (id === 'urun' && ['urun-siyah', 'urun-lacivert', 'urun-mama'].includes(activeSection))
         ? 'text-brand-gold'
         : 'text-gray-400 hover:text-brand-gold'
     }`
@@ -558,14 +561,15 @@ function App() {
               Premium <span className="brand-gradient-text">Güvercin Beslenme</span>
             </h1>
             <p className="mt-3 text-lg font-semibold uppercase tracking-[0.18em] text-brand-gold sm:text-xl">
-              Mix & Mama Ürün Ailesi
+              3 Premium Ürün
             </p>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
               Güvercin yetiştiriciliğinde profesyonel beslenme çözümleri.
-              <strong className="font-semibold text-white"> Premium Pigeon Mix 20 KG</strong> — Classic
-              Siyah ve Lacivert tahıl karışımları.
-              <strong className="font-semibold text-emerald-300"> %100 Doğal Güvercin Maması 1 KG</strong> —
-              yavru gelişimi ve doğal destek için toz form mama.
+              <strong className="font-semibold text-white"> Siyah</strong> ve
+              <strong className="font-semibold text-white"> Lacivert Güvercin Yemi</strong> — 20 KG
+              tahıl karışımları.
+              <strong className="font-semibold text-emerald-300"> Güvercin Maması</strong> — 1 KG
+              yavru gelişimi için doğal toz form mama.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2.5">
@@ -592,11 +596,11 @@ function App() {
                 WhatsApp Sipariş
               </a>
               <a
-                href="#mama"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-emerald-500/40 bg-emerald-500/5 px-8 py-4 text-sm font-extrabold uppercase tracking-wider text-emerald-300 transition hover:bg-emerald-500/10"
+                href="#urun"
+                className="inline-flex items-center justify-center gap-2 rounded-sm border border-brand-gold/40 bg-brand-gold/5 px-8 py-4 text-sm font-extrabold uppercase tracking-wider text-brand-gold transition hover:bg-brand-gold/10"
               >
-                <Sparkles size={20} />
-                Güvercin Maması
+                <Package size={20} />
+                Ürünleri İncele
               </a>
               <a
                 href="#bayilik"
@@ -616,23 +620,27 @@ function App() {
                   Master Pigeon
                 </span>
                 <span className="rounded-sm border border-brand-gold/40 bg-brand-gold/10 px-3 py-1 text-xs font-bold text-brand-gold">
-                  20 KG
+                  3 Ürün
                 </span>
               </div>
               <img
                 src={productImage}
-                alt="Master Pigeon Premium Pigeon Mix 20 KG — Siyah ve Lacivert ambalaj seçenekleri"
+                alt="Master Pigeon — Siyah ve Lacivert Güvercin Yemi 20 KG"
                 className="w-full rounded-lg object-contain"
                 fetchPriority="high"
               />
-              <div className="mt-4 flex items-center justify-center gap-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
                 <span className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full bg-neutral-900 ring-2 ring-neutral-600" />
-                  Classic Siyah
+                  Siyah Yem
                 </span>
                 <span className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full bg-brand-navy ring-2 ring-brand-navy-light" />
-                  Premium Lacivert
+                  Lacivert Yem
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-emerald-400" />
+                  Mama
                 </span>
               </div>
             </div>
@@ -662,126 +670,103 @@ function App() {
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Ürün Portföyü</SectionLabel>
             <h2 className="mt-3 text-3xl font-extrabold uppercase tracking-wider text-white sm:text-4xl">
-              İki Ürün Grubu
+              3 Premium Ürün
             </h2>
             <p className="mt-4 text-gray-300">
-              Master Pigeon; günlük tahıl karışımları ve yavru beslenmesi için
-              geliştirilmiş doğal mama grubu ile kapsamlı beslenme çözümleri sunar.
+              Siyah ve Lacivert güvercin yemi ile güvercin maması — her biri farklı
+              beslenme ihtiyacına özel geliştirilmiş Master Pigeon formülleri.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {productGroups.map((group) => (
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {products.map((product) => (
               <article
-                key={group.id}
-                className={`group rounded-xl border p-6 transition sm:p-8 ${group.accent}`}
+                key={product.id}
+                className={`group overflow-hidden rounded-2xl border bg-gradient-to-b transition hover:-translate-y-1 ${product.cardBorder} ${product.cardBg}`}
               >
-                <span className={`inline-block rounded-sm border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${group.tagClass}`}>
-                  {group.badge}
-                </span>
-                <h3 className="mt-4 text-2xl font-extrabold uppercase tracking-wider text-white">
-                  {group.title}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-gray-400">{group.weight} Ambalaj</p>
-                <p className="mt-4 leading-relaxed text-gray-300">{group.description}</p>
-                <a
-                  href={group.anchor}
-                  className="mt-6 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-brand-gold transition group-hover:gap-2 hover:text-brand-gold-light"
-                >
-                  {group.cta}
-                  <ChevronRight size={14} />
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="mix" className="scroll-mt-24 border-t border-white/10 py-16 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>Premium Mix Serisi</SectionLabel>
-            <h2 className="mt-3 text-3xl font-extrabold uppercase tracking-wider text-white sm:text-4xl">
-              İki Ambalaj Seçeneği
-            </h2>
-            <p className="mt-4 text-gray-300">
-              Classic Siyah ve Premium Lacivert; her biri kendine özgü tahıl,
-              baklagil ve tohum karışımıyla hazırlanmış premium formüller sunar.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {variants.map((variant) => (
-              <article
-                key={variant.name}
-                className={`group rounded-xl border p-6 transition hover:border-brand-gold/30 sm:p-8 ${variant.accent}`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className={`h-4 w-4 rounded-full ring-2 ${variant.dot}`} />
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-xl font-extrabold uppercase tracking-wider text-white">
-                        {variant.name}
-                      </h3>
-                      <span className="rounded-sm border border-brand-gold/25 bg-brand-gold/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-gold">
-                        {variant.tag}
-                      </span>
-                    </div>
-                    <p className="text-sm font-medium text-brand-gold">{variant.color}</p>
+                <div className="relative aspect-[4/3] overflow-hidden bg-brand-black">
+                  <img
+                    src={product.image}
+                    alt={product.imageAlt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent" />
+                  <span className="absolute left-4 top-4 rounded-sm border border-white/20 bg-brand-black/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
+                    {product.weight}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2">
+                    <span className={`h-3 w-3 shrink-0 rounded-full ring-2 ${product.dot}`} />
+                    <span className={`rounded-sm border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${product.tagStyle}`}>
+                      {product.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-xl font-extrabold uppercase tracking-wider text-white">
+                    {product.name}
+                  </h3>
+                  <p className="mt-1 text-xs font-medium text-gray-500">{product.pack}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-300">{product.description}</p>
+                  <ul className="mt-4 space-y-1.5">
+                    {product.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-xs text-gray-400">
+                        <BadgeCheck size={12} className={`shrink-0 ${product.accentText}`} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 flex flex-col gap-2">
+                    <a
+                      href={`#${product.id}`}
+                      className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider transition group-hover:gap-2 ${product.accentText}`}
+                    >
+                      Detayları İncele
+                      <ChevronRight size={14} />
+                    </a>
+                    <a
+                      href={product.whatsapp}
+                      className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[11px] font-bold uppercase tracking-wider text-gray-200 transition hover:border-brand-gold/30 hover:text-brand-gold"
+                    >
+                      <MessageCircle size={14} />
+                      Sipariş Ver
+                    </a>
                   </div>
                 </div>
-                <p className="mt-4 leading-relaxed text-gray-300">{variant.description}</p>
-                <ul className="mt-5 space-y-2 text-sm text-gray-400">
-                  {variant.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <BadgeCheck size={14} className="shrink-0 text-brand-gold/70" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={variant.contentAnchor}
-                  className="mt-5 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-brand-gold transition group-hover:gap-2 hover:text-brand-gold-light"
-                >
-                  İçerik Karışımını İncele
-                  <ChevronRight size={14} />
-                </a>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="icerik" className="scroll-mt-24 border-t border-white/10 py-16 sm:py-20">
+        <section className="border-t border-white/10 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Formül Detayı</SectionLabel>
             <h2 className="mt-3 text-3xl font-extrabold uppercase tracking-wider text-white sm:text-4xl">
-              İçerik Karışımları
+              Ürün İçerikleri
             </h2>
             <p className="mt-4 text-gray-300">
-              Her ambalaj seçeneği, güvercin beslenmesine özel hazırlanmış
-              premium tahıl ve tohum karışımı sunar.
+              Her ürün, güvercin beslenmesine özel hazırlanmış premium formül sunar.
             </p>
           </div>
 
-          <div className="sticky top-[68px] z-30 mx-auto mt-10 flex max-w-xl flex-wrap justify-center gap-2 rounded-full border border-white/10 bg-brand-black/80 p-1.5 backdrop-blur">
-            <a
-              href="#icerik-siyah"
-              className={`rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition sm:text-xs ${
-                activeSection === 'icerik-siyah'
-                  ? 'bg-neutral-800 text-white ring-1 ring-neutral-600'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Classic Siyah
-            </a>
-            <a
-              href="#icerik-lacivert"
-              className={`rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition sm:text-xs ${
-                activeSection === 'icerik-lacivert'
-                  ? 'bg-brand-navy text-white ring-1 ring-brand-navy-light'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Premium Lacivert
-            </a>
+          <div className="sticky top-[68px] z-30 mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-2 rounded-full border border-white/10 bg-brand-black/80 p-1.5 backdrop-blur">
+            {products.map((product) => (
+              <a
+                key={product.id}
+                href={`#${product.id}`}
+                className={`rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition sm:text-xs ${
+                  activeSection === product.id
+                    ? product.id === 'urun-siyah'
+                      ? 'bg-neutral-800 text-white ring-1 ring-neutral-600'
+                      : product.id === 'urun-lacivert'
+                        ? 'bg-brand-navy text-white ring-1 ring-brand-navy-light'
+                        : 'bg-emerald-700 text-white ring-1 ring-emerald-500'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {product.name}
+              </a>
+            ))}
           </div>
 
           <div className="mt-12 space-y-10">
@@ -863,11 +848,11 @@ function App() {
           </div>
         </section>
 
-        <section id="mama" className="scroll-mt-24 border-t border-emerald-500/20 py-16 sm:py-20">
+        <section id="urun-mama" className="scroll-mt-24 border-t border-emerald-500/20 py-16 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>Güvercin Maması Grubu</SectionLabel>
+            <SectionLabel>Güvercin Maması</SectionLabel>
             <h2 className="mt-3 text-3xl font-extrabold uppercase tracking-wider text-white sm:text-4xl">
-              %100 Doğal Güvercin Maması
+              %100 Doğal · 1 KG
             </h2>
             <p className="mt-4 text-gray-300">
               Sağlıklı yavrular, güçlü yarınlar. Yavru gelişimi ve doğal beslenme
@@ -896,9 +881,9 @@ function App() {
                   Doğadan Gelen Sağlık ve Güç
                 </h3>
                 <p className="mt-4 leading-relaxed text-gray-300">
-                  Master Pigeon %100 Doğal Güvercin Maması; mercimek, darı, bezelye,
-                  mısır ve seçilmiş tahıl karışımından oluşan, yavru gelişimini
-                  destekleyen premium toz mama formülüdür.
+                  Master Pigeon Güvercin Maması; mercimek, darı, bezelye, mısır ve
+                  seçilmiş tahıl karışımından oluşan, yavru gelişimini destekleyen
+                  premium toz mama formülüdür.
                 </p>
                 <ul className="mt-6 space-y-3 text-sm text-gray-300">
                   {[
@@ -923,8 +908,8 @@ function App() {
               </div>
               <div className="relative">
                 <img
-                  src={mashHeroImage}
-                  alt="Master Pigeon %100 Doğal Güvercin Maması 1 KG — sağlıklı yavrular için doğal destek"
+                  src={mashProductImage}
+                  alt="Güvercin Maması — %100 Doğal 1 KG ambalaj"
                   loading="lazy"
                   className="w-full rounded-xl object-cover shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
                 />
@@ -950,38 +935,21 @@ function App() {
             })}
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <article className="overflow-hidden rounded-2xl border border-emerald-500/15 bg-gradient-to-br from-emerald-950/30 to-brand-black">
-              <div className="p-6 sm:p-8">
-                <h3 className="text-xl font-extrabold uppercase tracking-wider text-white">
-                  Ürün Görseli
-                </h3>
-                <p className="mt-2 text-sm text-gray-400">1 KG şeffaf ambalaj — %100 Doğal Güvercin Maması</p>
-              </div>
-              <img
-                src={mashProductImage}
-                alt="Master Pigeon %100 Doğal Güvercin Maması 1 KG ürün ambalajı"
-                loading="lazy"
-                className="w-full object-cover"
-              />
-            </article>
-
-            <article className="overflow-hidden rounded-2xl border border-emerald-500/15 bg-gradient-to-br from-emerald-950/30 to-brand-black">
-              <div className="p-6 sm:p-8">
-                <h3 className="text-xl font-extrabold uppercase tracking-wider text-white">
-                  Yavru Beslenme Desteği
-                </h3>
-                <p className="mt-2 text-sm text-gray-400">
-                  Sağlıklı kuşlar için doğal destek — yavru gelişiminde güvenilir beslenme
-                </p>
-              </div>
-              <img
-                src={mashDetailImage}
-                alt="Master Pigeon güvercin maması ile yavru beslenme görseli"
-                loading="lazy"
-                className="w-full object-cover"
-              />
-            </article>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-emerald-500/15 bg-gradient-to-br from-emerald-950/30 to-brand-black">
+            <div className="p-6 sm:p-8">
+              <h3 className="text-xl font-extrabold uppercase tracking-wider text-white">
+                Yavru Beslenme Desteği
+              </h3>
+              <p className="mt-2 text-sm text-gray-400">
+                Sağlıklı kuşlar için doğal destek — yavru gelişiminde güvenilir beslenme
+              </p>
+            </div>
+            <img
+              src={mashDetailImage}
+              alt="Güvercin maması ile yavru beslenme görseli"
+              loading="lazy"
+              className="w-full object-cover"
+            />
           </div>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -1020,8 +988,8 @@ function App() {
                 </p>
                 <p className="rounded-sm border border-emerald-500/20 bg-emerald-500/5 p-4 text-emerald-200">
                   Mama formülü; yavru dönemi, büyüme desteği ve ek beslenme ihtiyaçları
-                  için idealdir. Yetişkin güvercinlerin ana yemi için Premium Mix serisini
-                  tercih edin.
+                  için idealdir. Yetişkin güvercinlerin ana yemi için Siyah veya Lacivert
+                  Güvercin Yemi ürünlerini tercih edin.
                 </p>
               </div>
             </div>
@@ -1276,8 +1244,8 @@ function App() {
             <div className="lg:col-span-1">
               <img src={logoImage} alt="Master Pigeon" className="h-12 w-auto" />
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
-                Premium güvercin beslenme çözümleri. Premium Pigeon Mix 20 KG tahıl
-                karışımları ve %100 Doğal Güvercin Maması 1 KG ile kapsamlı ürün portföyü.
+                Premium güvercin beslenme çözümleri. Siyah ve Lacivert Güvercin Yemi
+                ile Güvercin Maması — üç ürünlük kapsamlı portföy.
               </p>
             </div>
             {FOOTER_GROUPS.map((group) => (
